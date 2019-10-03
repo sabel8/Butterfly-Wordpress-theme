@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- own stylesheet -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Chilanka|Dosis&display=swap" rel="stylesheet">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<!-- scrollify -->
+	<script src="jquery.scrollify.js"></script>
+
+	<!-- library for moving image on path -->
+	<script src="snap.svg-min.js"></script>
+
+	<!-- own script -->
+	<script src="script.js"></script>
+	<script>
+		$(function () {
+			$.scrollify({
+				section: ".sections",
+				after: function (i, s) {
+					let length, interval;
+					//start
+					if (i == 1) {
+						interval = SVGanimationDuration;
+						length = 0;
+						movingiconanimation();
+						//reset
+					} else {
+						$("#movingicon").hide();
+						interval = 0;
+						length = $("#firstPath").get(0).getTotalLength();
+					}
+					$("#firstPath").css("transition", "stroke-dashoffset " + interval + "s ease-in-out");
+					$("#firstPath").attr("stroke-dashoffset", length);
+				}
+			});
+		});
+	</script>
+	<title>BUTTERFLY WP-THEME</title>
+</head>
+
+<body>
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="#home" onclick="closeNav('home')">Home</a>
+		<a href="#body" onclick="closeNav('body')">Services</a>
+		<a href="#" onclick="closeNav()">Clients</a>
+		<a href="#" onclick="closeNav()">Contact</a>
+	</div>
+	<div id="mainSection" class="sections" data-section-name="home">
+		<span onclick="openNav()"><img id="menuIcon" src="Hamburger_icon.svg" alt="menu Hamburger_icon"></span>
+		<div id="mainCenter" class="container">
+			<div id="mainTitle">Butterfly</div>
+			<div>This one-pager Wordpress theme features beautiful design with a
+				lot of useful functions and a wide range of avaliable options.
+				Give it a try for just $19!</div>
+			<button class="mainSectionButton">egyik</button>
+			<button class="mainSectionButton">másik</button>
+		</div>
+	</div>
+	<div id="bodySection" class="sections" data-section-name="body">
+		<div class="container" id="bodyContainer">
+			<svg id="firstSVG">
+				<path fill="none" stroke="black" stroke-width="2" id="firstPath" />
+				<image id="movingicon" href="sendicon.png" width="50" height="50">
+			</svg>
+			<div class="serviceContainer">
+				<div class="col-auto">
+					<img src="truckicon.png" width="50" height="50">
+				</div>
+				<div class="col-10 row" style="align-items:center">
+					<div class="col-md-4">
+						<span class="serviceTitle">FIRST SERVICE</span>
+					</div>
+					<div class="col-md-8 serviceDescription">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt nisl sed sagittis
+						dapibus. Etiam mi eros, sagittis id erat eu, rutrum consectetur enim.
+					</div>
+				</div>
+			</div>
+
+			<div class="serviceContainer">
+				<div class="col-10 row" style="align-items:center">
+					<div class="col-md-4">
+						<span class="serviceTitle">SECOND SERVICE</span>
+					</div>
+					<div class="col-md-8 serviceDescription">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt nisl sed sagittis
+						dapibus. Etiam mi eros, sagittis id erat eu, rutrum consectetur enim.
+					</div>
+				</div>
+				<div class="col-auto">
+					<img src="truckicon.png" width="50" height="50">
+				</div>
+			</div>
+
+			<div class="serviceContainer">
+				<div class="col-auto">
+					<img src="truckicon.png" width="50" height="50">
+				</div>
+				<div class="col-10 row" style="align-items:center">
+					<div class="col-md-4">
+						<span class="serviceTitle">THIRD SERVICE</span>
+					</div>
+					<div class="col-md-8 serviceDescription">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt nisl sed sagittis
+						dapibus. Etiam mi eros, sagittis id erat eu, rutrum consectetur enim.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
