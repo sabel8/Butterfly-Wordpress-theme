@@ -1,9 +1,9 @@
 var movingicon, movingiconbox, movingiconpath, movingiconpathlength,
-SVGanimationDuration=10;
+	containerFade1,containerFade2,containerFade3,
+	SVGanimationDuration=10;
 
 $(function () {
 	$("#mainSection").on("mousemove", function (e) {
-		/* console.log(e.pageX +" : "+e.pageY); */
 		let purplePercent = Math.round(e.pageX / $(window).width() * 100 / 4) + 75;
 		let bluePercent = Math.round(e.pageY / $(window).height() * 100 / 5);
 		$("#mainSection").css("background-image", "linear-gradient(" + (bluePercent + 350) + "deg, #21D4FD " + bluePercent +
@@ -46,15 +46,12 @@ $(function () {
 	//section css setup
 	$(".serviceContainer").css({"margin-top":(heightUnit * 2)-30+"px",
 		"height":heightUnit*2+40});
-	
-	//fade in the services divs
-	setTimeout(function(){$('.serviceContainer:eq(0)').fadeIn("slow")}, (SVGanimationDuration/3-SVGanimationDuration/4)*1000);
-	setTimeout(function(){$('.serviceContainer:eq(1)').fadeIn("slow")}, (SVGanimationDuration/3*2-SVGanimationDuration/4)*1000);
-	setTimeout(function(){$('.serviceContainer:eq(2)').fadeIn("slow")}, (SVGanimationDuration-SVGanimationDuration/4)*1000);
 });
 
 function movingiconanimation() {
+	fadeInServiceContainers();
 	$("#movingicon").show();
+	//fade in the services divs
 	Snap.animate(0, movingiconpathlength, function (step) {
 		moveToPoint = Snap.path.getPointAtLength(movingiconpath, step);
 		x = moveToPoint.x - (movingiconbox.width / 2);
@@ -62,6 +59,21 @@ function movingiconanimation() {
 		movingicon.transform('translate(' + x + ',' + y + ') rotate(' + (moveToPoint.alpha - 90) + ', ' + 
 		movingiconbox.cx + ', ' + movingiconbox.cy + ')');
 	}, SVGanimationDuration*1000, mina.easeinout);
+}
+
+function fadeInServiceContainers() {
+	containerFade1 = setTimeout(function(){$('.serviceContainer:eq(0)').animate({opacity:1},3000)}, (SVGanimationDuration/15)*1000);
+	containerFade2 = setTimeout(function(){$('.serviceContainer:eq(1)').animate({opacity:1},3000)}, (SVGanimationDuration/3)*1000);
+	containerFade3 = setTimeout(function(){$('.serviceContainer:eq(2)').animate({opacity:1},3000)}, (SVGanimationDuration/2)*1000);
+}
+
+function abortContainerFades() {
+	clearTimeout(containerFade1);
+	clearTimeout(containerFade2);
+	clearTimeout(containerFade3);
+	//stop the animations which already have started
+	$(".serviceContainer").stop();
+	$(".serviceContainer").css("opacity",0);
 }
 
 var navWidth = 250;

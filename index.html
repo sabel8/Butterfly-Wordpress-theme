@@ -5,8 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<!-- own stylesheet -->
-	<link rel="stylesheet" href="style.css">
 
 	<!-- fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Chilanka|Dosis&display=swap" rel="stylesheet">
@@ -31,6 +29,9 @@
 
 	<!-- own script -->
 	<script src="script.js"></script>
+
+	<!-- own stylesheet -->
+	<link rel="stylesheet" href="style.css">
 	<script>
 		$(function () {
 			$.scrollify({
@@ -44,6 +45,7 @@
 						movingiconanimation();
 						//reset
 					} else {
+						abortContainerFades();
 						$("#movingicon").hide();
 						interval = 0;
 						length = $("#firstPath").get(0).getTotalLength();
@@ -82,9 +84,9 @@
 				<path fill="none" stroke="black" stroke-width="2" id="firstPath" />
 				<image id="movingicon" href="sendicon.png" width="50" height="50">
 			</svg>
-			<div class="serviceContainer">
-				<div class="col-auto">
-					<img src="truckicon.png" width="50" height="50">
+			<div class="row serviceContainer">
+				<div class="col-2">
+					<img src="http://via.placeholder.com/50/000000/FFFFFF/?text=IMAGE" width="50" height="50">
 				</div>
 				<div class="col-10 row" style="align-items:center">
 					<div class="col-md-4">
@@ -97,7 +99,7 @@
 				</div>
 			</div>
 
-			<div class="serviceContainer">
+			<div class="row serviceContainer">
 				<div class="col-10 row" style="align-items:center">
 					<div class="col-md-4">
 						<span class="serviceTitle">SECOND SERVICE</span>
@@ -107,14 +109,14 @@
 						dapibus. Etiam mi eros, sagittis id erat eu, rutrum consectetur enim.
 					</div>
 				</div>
-				<div class="col-auto">
-					<img src="truckicon.png" width="50" height="50">
+				<div class="col-2">
+					<img src="http://via.placeholder.com/50/000000/FFFFFF/?text=IMAGE" width="50" height="50">
 				</div>
 			</div>
 
-			<div class="serviceContainer">
-				<div class="col-auto">
-					<img src="truckicon.png" width="50" height="50">
+			<div class="row serviceContainer">
+				<div class="col-2">
+					<img src="http://via.placeholder.com/50/000000/FFFFFF/?text=IMAGE" width="50" height="50">
 				</div>
 				<div class="col-10 row" style="align-items:center">
 					<div class="col-md-4">
